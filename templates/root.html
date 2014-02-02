@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    <SCRIPT TYPE="text/javascript" src="{{ url_for('static', filename='spin.js') }}"></SCRIPT>
+    <SCRIPT TYPE="text/javascript">
+    var opts = {
+        lines: 15, length: 9, width: 2, radius: 10, corners: 1, rotate: 0,
+        direction: 1, color: '#fff', speed: 2.2, trail: 70, shadow: true,
+        hwaccel: false, className: 'spinner', zIndex: 2e9, top: 'auto',
+        left: 'auto'
+    };
+    var makeSpinner = function(){
+        var spinner = new Spinner(opts).spin();
+        var target = document.getElementById("loadDiv");
+        target.innerHtml = '';
+        target.appendChild(spinner.el);
+    }
+</SCRIPT>
+</head>
+<body>
+    <title>Input URL</title>
+    Paste a link to the <b>prelim records</b> page of a <b>Tabroom</b> tournament here:<br>
+    Then click Submit.  It may take upwards of 30 seconds to pull all the information.<br>
+    Be patient.
+    <div id="form">
+    <form method="post" action="/">
+        <textarea name="url" cols="25" rows="5"></textarea><br>
+        <input type="submit" onclick="makeSpinner()" value="Submit" />
+    </form>
+</div>
+    <div id="loadDiv" style="position:fixed;top:50%;left:50%"></div>
+</body>
+<footer><br>© Sweyn Venderbush, 2014<br>
+    Email any bugs to sweyn3[at]gmail.com<br><br>
+    Next Steps:<br>
+    Prettier UI<br>
+    Support for Joy of Tournaments
+ </footer
+</html>
