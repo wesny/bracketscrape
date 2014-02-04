@@ -21,3 +21,6 @@ def root():
         list = scrapeTab.scrapeTabroom(request.form['url'])
         return render_template('final.html', list=list)
 
+@app.errorhandler(500)
+def tooLong(e):
+    return "Sorry! The request took too long. We're working on this error. Try it again!", 500
